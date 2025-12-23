@@ -16,9 +16,9 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://blue-academy-rust.vercel.app/",
       "https://lustrously-prorevision-lesley.ngrok-free.dev/",
       "http://localhost:3000",
-      "https://blue-academy-rust.vercel.app/",
     ], // Allow requests ONLY from your widget
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
