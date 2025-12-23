@@ -20,7 +20,8 @@ app.use(
       "http://localhost:3000",
       "https://blue-academy-rust.vercel.app/",
     ], // Allow requests ONLY from your widget
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 app.use(bodyParser.json());
