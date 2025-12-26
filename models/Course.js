@@ -1,32 +1,101 @@
 const mongoose = require("mongoose");
 
-const CourseSchema = new mongoose.Schema({
-  slug: { type: String, required: true, unique: true },
-  title: { type: String, required: true },
-  subtitle: String, // CKEditor HTML
-  category: String,
-  image: String,
+const CourseSchema = new mongoose.Schema(
+  {
+    // --- 1. ESSENTIALS ---
+    slug: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
+    subtitle: String, // HTML from CustomEditor
+    category: String,
+    image: String,
 
-  rating: { type: String, default: "4.8" },
-  duration: String,
-  fee: String,
-  nextBatch: String,
+    // --- 2. PRICING & STATS ---
+    rating: { type: String, default: "4.8" },
+    duration: String,
+    fee: String,
+    nextBatch: String, // Date string from input type="date"
+    level: String, // e.g., "Beginner to Intermediate"
 
-  // --- Lists ---
-  badges: [String],
-  heroFeatures: [String],
-  skills: [String], // Array of strings (e.g., ["React", "Node"])
+    // --- 3. HIGHLIGHTS & AUDIENCE (Arrays) ---
+    badges: [String],
+    heroFeatures: [String],
+    skills: [String],
+    targetAudience: [String],
+    prerequisites: String, // HTML from CustomEditor
 
-  // --- Rich Text ---
-  prerequisites: String, // CHANGED to String for CKEditor HTML
-  targetAudience: [String],
+    // --- 4. OUTCOMES ---
+    outcomes: String, // HTML from CustomEditor
 
-  // --- Complex Data ---
-  curriculum: [{ title: String, details: String }],
-  instructors: [{ name: String, role: String, company: String, image: String }],
-  jobRoles: [{ role: String, salary: String, demand: String }],
-  reviews: [{ name: String, role: String, text: String, image: String }],
-  faqs: [{ q: String, a: String }],
-});
+    // --- 5. PROGRAM DETAILS (New Object) ---
+    programDetails: {
+      type: String, // e.g., "Technical Hands-On Training"
+      mode: String, // e.g., "Instructor-led"
+      smeCriteria: [String], // Array of strings
+      certCriteria: [String], // Array of strings
+    },
 
-module.exports = mongoose.model("Course", CourseSchema);
+    // --- 6. CURRICULUM (Deeply Nested) ---
+    curriculum: [
+      {
+        title: String,
+        details: String, // Module Description (HTML)
+        sections: [
+          {
+            title: String,
+            concepts: String, // HTML from CustomEditor
+            labs: String, // HTML from CustomEditor
+            tools: [String], // Array from TagInput
+          },
+        ],
+      },
+    ],
+
+    // --- 7. CAPSTONE PROJECTS ---
+    capstones: [
+      {
+        title: String,
+        details: String, // HTML from CustomEditor
+        tools: [String], // Array from TagInput
+      },
+    ],
+
+    // --- 8. INSTRUCTORS ---
+    instructors: [
+      {
+        name: String,
+        role: String,
+        company: String,
+        image: String,
+      },
+    ],
+
+    // --- 9. JOB ROLES ---
+    jobRoles: [
+      {
+        role: String,
+        salary: String,
+        demand: String,
+      },
+    ],
+
+    // --- 10. REVIEWS & FAQS ---
+    reviews: [
+      {
+        name: String,
+        role: String,
+        text: String, // HTML
+        image: String,
+      },
+    ],
+    faqs: [
+      {
+        q: String,
+        a: String, // HTML
+      },
+    ],
+  },
+  { timestamps: true }
+);
+
+module.exports =
+  mongoose.models.Course || mongoose.model("Course", CourseSchema);
