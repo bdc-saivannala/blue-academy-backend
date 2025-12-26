@@ -26,15 +26,7 @@ const CourseSchema = new mongoose.Schema(
     // --- 4. OUTCOMES ---
     outcomes: String, // HTML from CustomEditor
 
-    // --- 5. PROGRAM DETAILS (New Object) ---
-    programDetails: {
-      type: String, // e.g., "Technical Hands-On Training"
-      mode: String, // e.g., "Instructor-led"
-      smeCriteria: [String], // Array of strings
-      certCriteria: [String], // Array of strings
-    },
-
-    // --- 6. CURRICULUM (Deeply Nested) ---
+    // --- 5. CURRICULUM (Deeply Nested) ---
     curriculum: [
       {
         title: String,
@@ -50,7 +42,7 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
 
-    // --- 7. CAPSTONE PROJECTS ---
+    // --- 6. CAPSTONE PROJECTS ---
     capstones: [
       {
         title: String,
@@ -59,7 +51,7 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
 
-    // --- 8. INSTRUCTORS ---
+    // --- 7. INSTRUCTORS ---
     instructors: [
       {
         name: String,
@@ -69,7 +61,7 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
 
-    // --- 9. JOB ROLES ---
+    // --- 8. JOB ROLES ---
     jobRoles: [
       {
         role: String,
@@ -78,7 +70,7 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
 
-    // --- 10. REVIEWS & FAQS ---
+    // --- 9. REVIEWS & FAQS ---
     reviews: [
       {
         name: String,
