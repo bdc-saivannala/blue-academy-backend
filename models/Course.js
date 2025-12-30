@@ -8,9 +8,10 @@ const CourseSchema = new mongoose.Schema(
     subtitle: String, // HTML from CustomEditor
     category: String,
     image: String,
+    bannerImage: String,
 
     // --- 2. PRICING & STATS ---
-    rating: { type: String, default: "4.8" },
+    rating: { type: String, default: "" },
     duration: String,
     fee: String,
     nextBatch: String, // Date string from input type="date"
