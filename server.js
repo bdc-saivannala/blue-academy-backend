@@ -9,6 +9,7 @@ const courseRoutes = require("./routes/courses");
 const contactRoutes = require("./routes/contact");
 const adminRoutes = require("./routes/admin");
 const applicationRoutes = require("./routes/applications");
+const leadRoutes = require("./routes/leads");
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use("/api/courses", courseRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/leads", leadRoutes);
 
 // Base Route (Health Check)
 app.get("/", (req, res) => {

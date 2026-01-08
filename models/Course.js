@@ -52,6 +52,16 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
 
+    // --- 7. Leaders ---
+    leaders: [
+      {
+        name: String,
+        role: String,
+        company: String,
+        image: String,
+      },
+    ],
+
     // --- 7. INSTRUCTORS ---
     instructors: [
       {
