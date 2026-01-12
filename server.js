@@ -17,8 +17,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://blue-academy-rust.vercel.app",
-      "https://lustrously-prorevision-lesley.ngrok-free.dev/",
+      "https://www.blueacademy.ai/",
+      "https://blue-academy-pre-sales-v1-0-1.onrender.com/chat-widget/chat-widget.js",
       "http://localhost:3000",
     ], // Allow requests ONLY from your widget
     methods: ["GET", "POST", "PUT", "DELETE"],
