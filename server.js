@@ -10,6 +10,7 @@ const contactRoutes = require("./routes/contact");
 const adminRoutes = require("./routes/admin");
 const applicationRoutes = require("./routes/applications");
 const leadRoutes = require("./routes/leads");
+const enrollmentRoutes = require("./routes/enrollments");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/leads", leadRoutes);
+app.use("/api/enrollments", enrollmentRoutes);
 
 // Base Route (Health Check)
 app.get("/", (req, res) => {
