@@ -13,7 +13,8 @@ const CourseSchema = new mongoose.Schema(
     // --- 2. PRICING & STATS ---
     rating: { type: String, default: "" },
     duration: String,
-    fee: String,
+    fee: String, // Original Fee (e.g. "50000")
+    discount: { type: String, default: "0" }, // ✅ ADDED: Discount Percentage (e.g. "20")
     nextBatch: String, // Date string from input type="date"
     level: String, // e.g., "Beginner to Intermediate"
 
@@ -97,7 +98,7 @@ const CourseSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports =
